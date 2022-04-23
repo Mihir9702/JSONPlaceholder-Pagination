@@ -1,7 +1,10 @@
 import React from "react";
 
+type Page = number;
+type SetPage = React.Dispatch<React.SetStateAction<Page>>;
+
 interface PaginationProps {
-  pageState: [number, React.Dispatch<React.SetStateAction<number>>];
+  pageState: [Page, SetPage];
 }
 
 const Pagination: React.FC<PaginationProps> = ({ pageState }) => {
@@ -11,6 +14,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageState }) => {
   const TOTALPOSTS = 100;
   const PAGESIZE = 20;
   const postsList = new Array(TOTALPOSTS / PAGESIZE).fill(0);
+  const postPages = postsList.map((_, idx) => idx + 1);
 
   return (
     <div className="pagination">
@@ -18,13 +22,13 @@ const Pagination: React.FC<PaginationProps> = ({ pageState }) => {
         Prev
       </button>
 
-      {postsList.map((_, idx) => (
+      {postPages.map((postPage) => (
         <button
-          key={idx}
-          onClick={() => setPage(idx + 1)}
-          disabled={idx + 1 === page}
+          key={postPage}
+          onClick={() => setPage(postPage)}
+          disabled={postPage === page}
         >
-          {idx + 1}
+          {postPage}
         </button>
       ))}
 
