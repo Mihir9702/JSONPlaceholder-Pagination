@@ -1,0 +1,95 @@
+:root {
+  --title-text-color: #333;
+  --body-text-color: #666;
+  --pagination-color: hsl(200, 100%, 50%);
+  --pagination-hover-color: hsl(200, 100%, 70%);
+  --pagination-disabled-color: hsla(200, 100%, 50%, 0.5);
+  --post-id-color: hsl(210, 100%, 20%);
+  --post-box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.posts {
+  margin-top: 5em;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5em;
+  text-align: center;
+  max-width: 60%;
+}
+
+@media screen and (max-width: 1440px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 2.25em;
+  gap: 1em;
+  justify-content: center;
+  border-radius: 0.5em;
+  text-align: left;
+  box-shadow: var(--post-box-shadow);
+}
+
+#post-id {
+  font-weight: 800;
+  text-align: right;
+  font-size: 0.8em;
+  color: var(--post-id-color);
+}
+
+#post-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--title-text-color);
+}
+
+#post-body {
+  position: relative;
+  bottom: 0;
+  font-size: 1.05rem;
+  color: var(--text-color);
+}
+
+.pagination {
+  margin: 4em;
+  display: flex;
+  gap: 5px;
+}
+
+.pagination > button {
+  background: none;
+  color: var(--pagination-color);
+  border: none;
+  cursor: pointer;
+}
+
+.pagination > button:hover {
+  color: var(--pagination-hover-color);
+  text-decoration: underline;
+}
+
+.pagination > button:disabled {
+  color: var(--pagination-disabled-color);
+  cursor: not-allowed;
+  text-decoration: none;
+}
