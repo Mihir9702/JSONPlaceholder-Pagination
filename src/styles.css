@@ -100,6 +100,14 @@ body {
   text-decoration: none;
 }
 
+.post-amount-select {
+  margin: 2em;
+  padding: 0.25em 0.5em;
+  border: 2px solid var(--post-border-color);
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   background-color: var(--background-color);

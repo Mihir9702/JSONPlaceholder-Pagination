@@ -5,16 +5,15 @@ type SetPage = React.Dispatch<React.SetStateAction<Page>>;
 
 interface PaginationProps {
   pageState: [Page, SetPage];
+  POSTAMOUNT: number;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ pageState }) => {
+const Pagination: React.FC<PaginationProps> = ({ pageState, POSTAMOUNT }) => {
   const [page, setPage] = pageState;
 
   // Pages are 20 items per page - 100 items total / 20 items per page = 5 pages
   const TOTALPOSTS = 100;
-  const PAGESIZE = 20;
-  const postsList = new Array(TOTALPOSTS / PAGESIZE).fill(0);
-  const postPages = postsList.map((_, idx) => idx + 1);
+  const postsList = new Array(Math.round(TOTALPOSTS / POSTAMOUNT)).fill(0);
 
   return (
     <div className="pagination">
@@ -22,13 +21,13 @@ const Pagination: React.FC<PaginationProps> = ({ pageState }) => {
         Prev
       </button>
 
-      {postPages.map((postPage) => (
+      {postsList.map((_, i) => (
         <button
-          key={postPage}
-          onClick={() => setPage(postPage)}
-          disabled={postPage === page}
+          key={i}
+          onClick={() => setPage(i + 1)}
+          disabled={i + 1 === page}
         >
-          {postPage}
+          {i + 1}
         </button>
       ))}
 
